@@ -1,16 +1,21 @@
-const webpack = require('webpack') //eslint-disable-line
 const path = require('path')
+const webpack = require('webpack') // eslint-disable-line
 
-// const srcPath = path.join(__dirname, 'app');
-const buildPath = path.join(__dirname, 'public')
+const srcPath = path.join(__dirname, '/app')
+const buildPath = path.join(__dirname, '/public')
 
 const prod = process.argv.indexOf('-p') !== -1
 
 const config = {
-  entry: ['babel-polyfill', './app/App.jsx'],
+  entry: [
+    'react-hot-loader/patch',
+    'babel-polyfill',
+    './app/App.jsx',
+  ],
   output: {
     path: buildPath,
-    filename: 'bundle.js',
+    filename: './bundle.js',
+    // publicPath: 'http://localhost:8080/',
   },
   resolve: {
     modules: [
@@ -22,12 +27,14 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
+        // exclude: /(node_modules)/,
+        include: srcPath,
         use: [{
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
-            presets: [['es2015', { modules: false }], 'react', 'stage-0'],
+            presets: [['es2015', { modules: false }], 'stage-0', 'react'],
+            plugins: ['react-hot-loader/babel'],
           },
         }],
       },
@@ -50,28 +57,27 @@ const config = {
   },
   node: {
     fs: 'empty',
+    net: 'empty',
   },
-  plugins: [
-  ],
+  plugins: [],
 }
 
 if (prod) {
-  config.devtool = 'cheap-module-source-map'
+  // config.devtool = 'cheap-module-source-map'
 
   config.plugins.push(
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: `"production"` // eslint-disable-line
-      },
+      'process.env.NODE_ENV': JSON.stringify('production'), // eslint-disable-line
     }))
 } else {
-  config.devtool = 'inline-source-map'
+  // config.devtool = 'inline-source-map'
+  config.devtool = 'eval'
 
-  config.plugins.push(new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: `""` // eslint-disable-line
-    },
-  }))
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(''), // eslint-disable-line
+    }))
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
 module.exports = config
