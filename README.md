@@ -22,7 +22,7 @@ Paul Hoskinson (plhosk@gmail.com)
 - Clone or download the code from git repository: `git clone https://github.com/plhosk/stock-sync.git`
 - Enter project folder: `cd stock-sync`
 - Install node packages: `npm install`
-- Rename the file ".env.example" in your project directory to ".env" and add the URI to your MongoDB database collection (example: `MONGO_URI=mongodb://localhost/nightlife`)
+- Rename the file ".env.example" in your project directory to ".env" and add the URI to your MongoDB database collection (example: `MONGO_URI=mongodb://localhost/stock-sync`)
 - Build the client bundle with Webpack: `npm run build` (or `npm run prod` for production)
 - Start the Node/Express web server: `npm start`
 - Visit the server URL in your web browser (default port 3000): [http://localhost:3000](http://localhost:3000)
