@@ -5,11 +5,14 @@ import { green500 } from 'material-ui/styles/colors'
 const styles = {
   outerDiv: {
     padding: '10px 0',
-    // lineHeight: '1.2em',
+    lineHeight: '1.3em',
   },
   logo: {
-    height: 100,
-    width: 100,
+    height: 48,
+    width: 48,
+    position: 'relative',
+    top: 16,
+    padding: 4,
   },
   title: {
     color: green500,
