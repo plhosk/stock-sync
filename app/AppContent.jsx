@@ -13,7 +13,7 @@ const AppContent = () => (
   <div style={styles.appContent}>
     <Index />
     <div>
-      App Content
+      App Contents
     </div>
   </div>
 )

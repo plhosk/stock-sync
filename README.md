@@ -14,6 +14,7 @@ Paul Hoskinson (plhosk@gmail.com)
 ---
 
 ### Main Technologies
+- Development: Hot Reloading, Webpack, babel, yarn, eslint (airbnb)
 - Client: React, Redux, redux-saga, Material UI, Web Sockets
 - Server: Node/Express, Mongoose, Web Sockets
 
