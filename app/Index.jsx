@@ -4,18 +4,27 @@ import { green500 } from 'material-ui/styles/colors'
 
 const styles = {
   outerDiv: {
-    padding: '10px 0',
-    lineHeight: '1.3em',
+    fontSize: '1.1em',
+    lineHeight: '1.6em',
+    padding: '0 10px',
   },
   logo: {
-    height: 48,
-    width: 48,
+    height: 60,
+    width: 60,
     position: 'relative',
     top: 16,
     padding: 4,
   },
   title: {
     color: green500,
+    fontSize: '2em',
+  },
+  instructions: {
+    color: green500,
+    marginTop: 30,
+    marginBottom: 10,
+    textAlign: 'center',
+    fontSize: '1.1em',
   },
 }
 
@@ -27,10 +36,14 @@ const Index = () => (
     </h2>
     <ul>
       <li>Enter a stock market symbol to create a chart.</li>
-      <li>Set chart options such as time scale and chart style.</li>
+      <li>Add, move or delete charts in the list.</li>
       <li>
-        Changes to chart settings (which charts are visible, individual chart options)
-        will be synchronized in real-time to anyone else who is using the app.
+        Any changes you make are instantly synchronized
+        with anyone else who is using the app.
+      </li>
+      <li>
+        Try opening the app on multiple browsers or devices
+        and watch the changes synchronize.
       </li>
       <li>
         Check out this app&rsquo;s source code on <a
@@ -42,6 +55,9 @@ const Index = () => (
       </a>.
       </li>
     </ul>
+    <div style={styles.instructions}>
+      Enter a stock symbol (i.e., AAPL, AMZN, FB, GOOG, MSFT)
+    </div>
   </div>
 )
 

@@ -5,8 +5,9 @@ import ChartList from './charts/ChartList'
 
 const styles = {
   appContent: {
-    maxWidth: 950,
+    maxWidth: 800,
     margin: '0 auto',
+    paddingBottom: 30,
   },
 }
 

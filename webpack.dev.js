@@ -6,9 +6,9 @@ const buildPath = path.join(__dirname, '/public')
 
 const config = {
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    'babel-polyfill',
     './app/App.jsx',
   ],
   output: {

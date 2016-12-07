@@ -1,11 +1,17 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import createSocketIoMiddleware from 'redux-socket.io'
+import io from 'socket.io-client'
 
 import reducer, { initialState } from './reducer'
 import rootSaga from './saga'
 
+const socket = io(process.env.SERVER_URL)
+const socketIoMiddleware = createSocketIoMiddleware(socket, 'server/')
+
 const sagaMiddleware = createSagaMiddleware()
-let storeEnhancers = applyMiddleware(sagaMiddleware)
+
+let storeEnhancers = applyMiddleware(sagaMiddleware, socketIoMiddleware)
 
 // add the redux dev tools
 if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {

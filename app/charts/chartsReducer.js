@@ -2,6 +2,20 @@ import { combineReducers } from 'redux'
 
 const chartsById = (state = {}, action) => {
   switch (action.type) {
+    case 'CHARTS_RECEIVE_PRICES': {
+      const { chartId, prices } = action.payload
+      if (!{}.hasOwnProperty.call(state, chartId)) return state
+      const chart = state[chartId]
+      return {
+        ...state,
+        [chartId]: {
+          ...chart,
+          prices,
+          loading: false,
+        },
+      }
+    }
+
     case 'CHARTS_ADD_CHART': {
       const { chartId, symbol } = action.payload
       const chart = {
@@ -16,20 +30,9 @@ const chartsById = (state = {}, action) => {
       }
     }
 
-    case 'CHARTS_SHOW_LOADING_INDICATOR': {
-      const { chartId } = action.payload
-      const chart = state[chartId]
-      return {
-        ...state,
-        [chartId]: {
-          ...chart,
-          loading: true,
-        },
-      }
-    }
-
     case 'CHARTS_HIDE_CHART': {
       const { chartId } = action.payload
+      if (!{}.hasOwnProperty.call(state, chartId)) return state
       const chart = state[chartId]
       return {
         ...state,
@@ -52,6 +55,7 @@ const allCharts = (state = [], action) => {
   switch (action.type) {
     case 'CHARTS_MOVE_UP': {
       const { chartId } = action.payload
+      if (state.indexOf(chartId) === -1) return state
       const oldIndex = state.indexOf(chartId)
       if (oldIndex === 0) return state
       return state
@@ -61,6 +65,7 @@ const allCharts = (state = [], action) => {
     }
     case 'CHARTS_MOVE_DOWN': {
       const { chartId } = action.payload
+      if (state.indexOf(chartId) === -1) return state
       const oldIndex = state.indexOf(chartId)
       if (oldIndex === state.length - 1) return state
       return state
