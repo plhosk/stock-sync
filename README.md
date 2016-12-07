@@ -1,4 +1,4 @@
-## Stock Sync - Real-time Collaboration (Web Sockets demo)
+## Stock Sync - Web Sockets demo
 Paul Hoskinson (plhosk@gmail.com)
 
 - Enter a stock market symbol to create a chart.
