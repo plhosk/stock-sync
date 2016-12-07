@@ -16,13 +16,13 @@ Paul Hoskinson (plhosk@gmail.com)
 
 ### Main Technologies
 - **Development**: Hot Reloading, Webpack, babel, yarn, eslint
-- **Client**: React, Redux, redux-saga, socket.io, Material UI
+- **Client**: React, Redux, redux-saga, socket.io
 - **Server**: Node/Express, socket.io
 
 ### Technical Discussion
 - Changes made in the client result in Redux actions being dispatched to the server.
 - The server uses these actions to update its own copy of the redux store and broadcast it to all connected web sockets.
-- The client receives the updated store from the server in the form of a Redux action.
+- The clients receive the updated store from the server in the form of a Redux action.
 - Hot Reloading is enabled for live editing of all content types (React components, Sagas, and Redux reducers)
 
 ### Development Instructions
