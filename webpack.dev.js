@@ -13,6 +13,7 @@ const config = {
   ],
   output: {
     path: buildPath,
+    pathinfo: true,
     filename: './bundle.js',
   },
   resolve: {
@@ -59,7 +60,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(''), // eslint-disable-line
+      'process.env.NODE_ENV': JSON.stringify('development'), // eslint-disable-line
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

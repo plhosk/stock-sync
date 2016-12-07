@@ -33,7 +33,6 @@ app.use(getStaticAssets())
 // app.use('/api/github', require('./api/github'))
 
 
-
 // default route for single-page app
 .use('/', express.static('public', { maxAge: oneDay }))
 // app.use('/', (req, res) => {

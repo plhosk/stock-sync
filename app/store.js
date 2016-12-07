@@ -14,6 +14,17 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
 
 const store = createStore(reducer, initialState, storeEnhancers)
 
-sagaMiddleware.run(rootSaga)
+let sagaTask = sagaMiddleware.run(rootSaga)
+
+// Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('./reducer', () => {
+    store.replaceReducer(reducer)
+  })
+  module.hot.accept('./saga', () => {
+    sagaTask.cancel()
+    sagaTask = sagaMiddleware.run(rootSaga)
+  })
+}
 
 export default store

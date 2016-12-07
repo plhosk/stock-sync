@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Index from './Index'
+import ChartList from './charts/ChartList'
 
 const styles = {
   appContent: {
@@ -12,9 +13,7 @@ const styles = {
 const AppContent = () => (
   <div style={styles.appContent}>
     <Index />
-    <div>
-      App Contents
-    </div>
+    <ChartList />
   </div>
 )
 

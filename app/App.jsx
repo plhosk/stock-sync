@@ -8,7 +8,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Redbox from 'redbox-react' // Remove in production build
 
 import store from './store'
-import reducer from './reducer'
 import AppContent from './AppContent'
 
 injectTapEventPlugin()
@@ -22,35 +21,30 @@ RedboxWithConsole.propTypes = {
   error: React.PropTypes.instanceOf(Error).isRequired,
 }
 
-const rootEl = document.getElementById('app')
+const rootElement = document.getElementById('app')
 
-render(
-  <AppContainer errorReporter={RedboxWithConsole}>
+let errorReporter
+if (process.env.NODE_ENV === 'production') {
+  errorReporter = null
+} else {
+  errorReporter = RedboxWithConsole
+}
+const renderApp = reporter => render(
+  <AppContainer errorReporter={reporter}>
     <Provider store={store}>
       <MuiThemeProvider>
         <AppContent />
       </MuiThemeProvider>
     </Provider>
   </AppContainer>,
-  rootEl,
+  rootElement,
 )
+
+renderApp(errorReporter)
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./reducer', () => {
-    store.replaceReducer(reducer)
-  })
-
   module.hot.accept('./AppContent', () => {
-    render(
-      <AppContainer errorReporter={RedboxWithConsole}>
-        <Provider store={store}>
-          <MuiThemeProvider>
-            <AppContent />
-          </MuiThemeProvider>
-        </Provider>
-      </AppContainer>,
-      rootEl,
-    )
+    renderApp(errorReporter)
   })
 }
