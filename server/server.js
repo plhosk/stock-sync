@@ -24,7 +24,7 @@ app.use(getStaticAssets())
 app.use('/', express.static('public', { maxAge: oneDay }))
 
 
-console.log(`NODE_ENV=${process.env.NODE_ENV}`) //eslint-disable-line
+// console.log(`NODE_ENV=${process.env.NODE_ENV}`) //eslint-disable-line
 
 app.set('port', process.env.PORT || 3000)
 
