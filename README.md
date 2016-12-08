@@ -30,7 +30,7 @@ Paul Hoskinson (plhosk@gmail.com)
 - Clone or download the code from git repository: `git clone https://github.com/plhosk/stock-sync.git`
 - Enter project folder: `cd stock-sync`
 - Install node packages: `npm install`
-- Rename the file ".env.example" in your project directory to ".env" and add the URL to your node server (example: `SERVER_URL=http://localhost:3000`) and your Quandl API Key
-- Build the client bundle with Webpack: `npm run build`
+- Rename the file ".env.example" in your project directory to ".env" and add the URL to your node server (example: `SERVER_URL=http://localhost:3000`) and your [Quandl API key](https://www.quandl.com/data/WIKI-Wiki-EOD-Stock-Prices/documentation/documentation)
 - Start the Node/Express web server: `npm start`
+- The server provides Hot Reloading and dynamic webpack bundling in development mode. Alternatively you can build a static production bundle with `npm build-prod` and start the production server with `npm start-prod`
 - Visit the server URL in your web browser (default port 3000): [http://localhost:3000](http://localhost:3000)

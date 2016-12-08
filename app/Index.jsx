@@ -69,7 +69,8 @@ const Index = () => (
       </li>
     </ul>
     <div style={styles.instructions}>
-      Enter a stock symbol (e.g., AAPL, AMZN, FB, GOOG, MSFT)
+      Enter a stock symbol (e.g., AAPL, AMZN, FB, GOOG, MSFT)<br />
+      or click &quot;Add Random&quot; for a random stock
     </div>
     <div style={styles.quandl}>
       Data source: Quandl API

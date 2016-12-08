@@ -1,3 +1,5 @@
+// List of maximally distant colors
+
 const colors = [
   '#000000', '#FFFF00', '#1CE6FF', '#FF34FF', '#FF4A46', '#008941',
   '#006FA6', '#A30059', '#FFDBE5', '#7A4900', '#0000A6', '#63FFAC', '#B79762',
