@@ -8,7 +8,6 @@ class LineChart extends React.Component { // eslint-disable-line
 
   shouldComponentUpdate(nextProps) {
     if (this.props.symbol !== nextProps.symbol) {
-      console.log('symbol changed')
       return true
     }
     if (this.props.prices && (
@@ -19,11 +18,9 @@ class LineChart extends React.Component { // eslint-disable-line
         nextProps.prices[nextProps.prices.length - 1][0] ||
         this.props.prices[nextProps.prices.length - 1][1] !==
         nextProps.prices[nextProps.prices.length - 1][1])) {
-      console.log('prices changed')
       return true
     }
     if (this.props.loading !== nextProps.loading) {
-      console.log('loading changed')
       return true
     }
     return false
@@ -65,7 +62,6 @@ class LineChart extends React.Component { // eslint-disable-line
         </div>
       )
     }
-    console.log(`re-rendering chart ${symbol}`) // eslint-disable-line
     const data = {}
     data.labels = prices.map(row => Date.parse(row[0]))
     const values = prices.map(row => row[1])
