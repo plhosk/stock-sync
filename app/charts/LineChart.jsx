@@ -4,7 +4,31 @@ import CircularProgress from 'material-ui/CircularProgress'
 
 import colors from './colors'
 
-class LineChart extends React.PureComponent { // eslint-disable-line
+class LineChart extends React.Component { // eslint-disable-line
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.symbol !== nextProps.symbol) {
+      console.log('symbol changed')
+      return true
+    }
+    if (this.props.prices && (
+        this.props.prices.length !== nextProps.prices.length ||
+        this.props.prices[0][0] !== nextProps.prices[0][0] ||
+        this.props.prices[0][1] !== nextProps.prices[0][1] ||
+        this.props.prices[nextProps.prices.length - 1][0] !==
+        nextProps.prices[nextProps.prices.length - 1][0] ||
+        this.props.prices[nextProps.prices.length - 1][1] !==
+        nextProps.prices[nextProps.prices.length - 1][1])) {
+      console.log('prices changed')
+      return true
+    }
+    if (this.props.loading !== nextProps.loading) {
+      console.log('loading changed')
+      return true
+    }
+    return false
+  }
+
   render() {
     const { symbol, prices, loading } = this.props
 
@@ -41,7 +65,7 @@ class LineChart extends React.PureComponent { // eslint-disable-line
         </div>
       )
     }
-
+    console.log(`re-rendering chart ${symbol}`) // eslint-disable-line
     const data = {}
     data.labels = prices.map(row => Date.parse(row[0]))
     const values = prices.map(row => row[1])
