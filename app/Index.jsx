@@ -5,7 +5,7 @@ import { green500 } from 'material-ui/styles/colors'
 const styles = {
   outerDiv: {
     fontSize: '1.1em',
-    lineHeight: '1.6em',
+    lineHeight: '1.8em',
     padding: '0 10px',
   },
   logo: {
@@ -21,10 +21,17 @@ const styles = {
   },
   instructions: {
     color: green500,
-    marginTop: 30,
-    marginBottom: 10,
+    marginTop: 10,
     textAlign: 'center',
     fontSize: '1.1em',
+  },
+  quandl: {
+    textAlign: 'right',
+    fontSize: '0.6em',
+    padding: 0,
+    margin: 0,
+    marginBottom: 5,
+    lineHeight: '0.6em',
   },
 }
 
@@ -35,11 +42,17 @@ const Index = () => (
       Stock Sync
     </h2>
     <ul>
-      <li>Enter a stock market symbol to create a chart.</li>
-      <li>Add, move or delete charts in the list.</li>
       <li>
-        Any changes you make are instantly synchronized
-        with anyone else who is using the app.
+        <strong>Enter a ticker symbol</strong> to see stock price over time
+        (from January 2016 to present).
+      </li>
+      <li>
+        <strong>Add</strong>, <strong>move</strong> or <strong>delete</strong> charts
+        in the list. You can add as many charts as you like.
+      </li>
+      <li>
+        Any changes you make are <strong>instantly synchronized</strong> with
+        anyone else who is using the app.
       </li>
       <li>
         Try opening the app on multiple browsers or devices
@@ -52,11 +65,14 @@ const Index = () => (
           rel="noopener noreferrer"
         >
           GitHub
-      </a>.
+        </a>.
       </li>
     </ul>
     <div style={styles.instructions}>
-      Enter a stock symbol (i.e., AAPL, AMZN, FB, GOOG, MSFT)
+      Enter a stock symbol (e.g., AAPL, AMZN, FB, GOOG, MSFT)
+    </div>
+    <div style={styles.quandl}>
+      Data source: Quandl API
     </div>
   </div>
 )

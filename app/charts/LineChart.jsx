@@ -11,7 +11,7 @@ const LineChart = (props) => {
     div: {
       maxWidth: 1000,
       height: 150,
-      padding: 0,
+      paddingBottom: 3,
       margin: '0 auto',
     },
     loadingDiv: {

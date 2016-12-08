@@ -6,6 +6,10 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
+import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward'
+import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-downward'
+import NavigationCancel from 'material-ui/svg-icons/navigation/cancel'
+import { blue500, red500 } from 'material-ui/styles/colors'
 
 import UpdateListOnLoad from './UpdateListOnLoad'
 import LineChart from './LineChart'
@@ -23,6 +27,8 @@ const styles = {
   },
   heading: {
     paddingTop: 15,
+    textAlign: 'right',
+    maxWidth: 700,
   },
   symbol: {
     fontWeight: 'bold',
@@ -30,8 +36,22 @@ const styles = {
     paddingRight: 30,
   },
   button: {
-    margin: '0 5px',
+    margin: '0 1px',
     height: 20,
+    marginTop: 5,
+  },
+  buttonIcon: {
+    height: 16,
+    width: 16,
+    position: 'relative',
+    top: '-1px',
+
+  },
+  buttonMoveText: {
+    color: blue500,
+  },
+  buttonDelText: {
+    color: red500,
   },
 }
 
@@ -41,7 +61,7 @@ const ChartList = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    const symbol = symbolInput.input.value
+    const symbol = symbolInput.input.value.toUpperCase()
     if (checkTickerSymbol.valid(symbol)) {
       document.getElementById('newSymbol').value = ''
       dispatch({
@@ -53,7 +73,7 @@ const ChartList = (props) => {
 
 
   return (
-    <Paper style={styles.paper}>
+    <Paper zDepth={2} style={styles.paper}>
       <UpdateListOnLoad />
       <div style={styles.topBar}>
 
@@ -70,8 +90,9 @@ const ChartList = (props) => {
           />
 
           <RaisedButton
-            label="Add Chart"
+            label="Add chart to list"
             type="submit"
+            // primary
           />
         </form>
       </div>
@@ -79,7 +100,7 @@ const ChartList = (props) => {
         {chartIds.map(id => (
           <div key={charts[id].id}>
 
-            <Divider />
+            <Divider style={{ padding: '0.5px 0' }} />
 
             <div style={styles.heading}>
 
@@ -89,7 +110,9 @@ const ChartList = (props) => {
 
               <RaisedButton
                 style={styles.button}
-                label="Move Up"
+                icon={<NavigationArrowUpward style={styles.buttonIcon} color={blue500} />}
+                labelPosition="after"
+                label={<span style={styles.buttonMoveText}>Up</span>}
                 onClick={() => {
                   dispatch({
                     type: 'CHARTS_MOVE_UP',
@@ -100,7 +123,9 @@ const ChartList = (props) => {
 
               <RaisedButton
                 style={styles.button}
-                label="Move Down"
+                icon={<NavigationArrowDownward style={styles.buttonIcon} color={blue500} />}
+                labelPosition="after"
+                label={<span style={styles.buttonMoveText}>Down</span>}
                 onClick={() => {
                   dispatch({
                     type: 'CHARTS_MOVE_DOWN',
@@ -111,7 +136,9 @@ const ChartList = (props) => {
 
               <RaisedButton
                 style={styles.button}
-                label="Delete"
+                icon={<NavigationCancel style={styles.buttonIcon} color={red500} />}
+                labelPosition="after"
+                label={<span style={styles.buttonDelText}>Del</span>}
                 onClick={() => {
                   dispatch({
                     type: 'CHARTS_HIDE_CHART',
