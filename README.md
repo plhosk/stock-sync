@@ -1,9 +1,7 @@
 ## Stock Sync - Web Sockets demo
 Paul Hoskinson (plhosk@gmail.com)
 
-<p align="center">
 <img alt="screenshot" src="https://github.com/plhosk/temp/raw/master/stock-sync.png" width="512">
-</p>
 
 - Enter a stock market symbol to create a chart.
 - Add, move or delete charts in the list.
